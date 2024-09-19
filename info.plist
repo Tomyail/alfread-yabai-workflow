@@ -60,7 +60,8 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>./src/yabai.sh get_yabai_action</string>
+				<string>./src/yabai.sh get_yabai_action
+</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -89,13 +90,13 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./src/yabai.sh $query</string>
+				<string>./src/yabai.sh "{query}"</string>
 				<key>scriptargtype</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>11</integer>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
