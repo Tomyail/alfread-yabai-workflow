@@ -7,12 +7,8 @@ get_yabai_action() {
   "items": [
     {
       "title": "Toggle Layout",
-      "subtitle": "Select to enter additional parameter",
+      "subtitle": "切换布局",
       "arg": "toggle_layout",
-    },
-    {
-      "title": "Send Current Active Window to Space",
-      "arg": "send_window_to_space",
     },
     {
       "title": "Cycle Clockwise",
