@@ -17,12 +17,17 @@ get_yabai_action() {
     {
       "title": "Cycle Clockwise",
       "subtitle":"顺时针循环调整窗口",
-      "arg": "cycle_clockwise",
+      "arg": "cycle_clockwise(option + r)",
     },
     {
       "title": "Cycle Counterclockwise",
       "subtitle":"逆时针循环调整窗口",
       "arg": "cycle_counterclockwise",
+    },
+    {
+      "title": "Swap to Last Window",
+      "subtitle":"将当前窗口与最后一个窗口交换",
+      "arg": "swap_to_last_win",
     }
   ]
 }
@@ -72,6 +77,10 @@ cycle_counterclockwise() {
   done
 }
 
+swap_to_last_win() {
+  yabai -m window --swap last
+}
+
 action="$1"
 case "$action" in
 "get_yabai_action")
@@ -85,6 +94,9 @@ case "$action" in
   ;;
 "cycle_counterclockwise")
   cycle_counterclockwise
+  ;;
+"swap_to_last_win")
+  swap_to_last_win
   ;;
 *)
   send_notification "Unknown action: $action"
