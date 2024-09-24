@@ -7,7 +7,7 @@ get_yabai_action() {
 
   # 动态生成 spaces 信息
   spaces_json=$(echo "$spaces" | jq -r '.[] | {
-    title: ("Space " + (.index | tostring)),
+    title: ("switch Space " + (.index | tostring)),
     subtitle: ("切换到 Space " + (.index | tostring)),
     arg: ("switch_space " + (.index | tostring))
   } | @json' | sed 's/^/    /' | sed '$!s/$/,/')
