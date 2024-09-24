@@ -27,7 +27,7 @@ get_yabai_action() {
       "arg": "toggle_window_layout"
     },
     {
-      "title": "Cycle Clockwise",
+      "title": "Cycle Clockwise Window",
       "subtitle":"顺时针循环调整窗口(option + r)",
       "arg": "cycle_clockwise"
     },
