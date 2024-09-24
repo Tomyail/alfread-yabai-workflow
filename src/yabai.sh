@@ -17,9 +17,14 @@ get_yabai_action() {
 {
   "items": [
     {
-      "title": "Toggle Layout",
-      "subtitle": "切换布局",
-      "arg": "toggle_layout"
+      "title": "Toggle Layout for Space",
+      "subtitle": "切换space布局",
+      "arg": "toggle_space_layout"
+    },
+    {
+      "title": "Toggle Layout for Window",
+      "subtitle": "切换窗口布局",
+      "arg": "toggle_window_layout"
     },
     {
       "title": "Cycle Clockwise",
@@ -54,7 +59,7 @@ send_notification() {
 }
 
 # 在 float 和 bsp 布局之间切换
-toggle_layout() {
+toggle_space_layout() {
   # 获取当前 space 的布局
   current_layout=$(yabai -m query --spaces --space | jq -r '.type')
 
@@ -65,6 +70,22 @@ toggle_layout() {
   else
     yabai -m space --layout bsp
     send_notification "已切换到 bsp 布局"
+  fi
+}
+
+toggle_window_layout() {
+  # 获取当前窗口的 ID
+  local window_id=$(yabai -m query --windows --window | jq -r '.id')
+
+  # 检查当前窗口是否处于浮动状态
+  local is_floating=$(yabai -m query --windows --window "$window_id" | jq -r '.["is-floating"]')
+
+  if [ "$is_floating" = "1" ]; then
+    # 如果是浮动状态，将窗口设置为非浮动状态
+    yabai -m window "$window_id" --toggle float
+  else
+    # 否则，将窗口设置为浮动状态
+    yabai -m window "$window_id" --toggle float
   fi
 }
 
@@ -102,8 +123,11 @@ case "$action" in
 "get_yabai_action")
   get_yabai_action
   ;;
-"toggle_layout")
-  toggle_layout
+"toggle_space_layout")
+  toggle_space_layout
+  ;;
+"toggle_window_layout")
+  toggle_window_layout
   ;;
 "cycle_clockwise")
   cycle_clockwise
