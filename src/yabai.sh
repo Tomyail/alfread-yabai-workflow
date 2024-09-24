@@ -12,6 +12,12 @@ get_yabai_action() {
     arg: ("switch_space " + (.index | tostring))
   } | @json' | sed 's/^/    /' | sed '$!s/$/,/')
 
+  spaces_json2=$(echo "$spaces" | jq -r '.[] | {
+    title: ("move_current_window_to_space " + (.index | tostring)),
+    subtitle: ("移动窗口到Space " + (.index | tostring)),
+    arg: ("move_current_window_to_space " + (.index | tostring))
+  } | @json' | sed 's/^/    /' | sed '$!s/$/,/')
+
   # 开始生成 JSON
   cat <<EOB
 {
@@ -46,6 +52,7 @@ get_yabai_action() {
       "subtitle":"切换到下一个 Space(shift + option + l)",
       "arg": "switch_next_space"
     },
+$spaces_json2,
 $spaces_json
   ]
 }
@@ -110,6 +117,11 @@ switch_space() {
   send_notification "已切换到 Space $space_index"
 }
 
+move_current_window_to_space() {
+  local space_index="$1"
+  yabai -m window --space "$space_index"
+}
+
 switch_next_space() {
   if [[ $(yabai -m query --spaces --display | jq '.[-1]."has-focus"') == "false" ]]; then yabai -m space --focus next; fi
 }
@@ -147,6 +159,10 @@ case "$action" in
 "switch_space "*)
   space_index="${action#switch_space }"
   switch_space "$space_index"
+  ;;
+"move_current_window_to_space "*)
+  space_index="${action#move_current_window_to_space }"
+  move_current_window_to_space "$space_index"
   ;;
 *)
   send_notification "Unknown action: $action"
