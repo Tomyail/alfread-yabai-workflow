@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.alfredapp.andrew.gettingstarted.scriptfilteroutput</string>
+	<string>com.alfredapp.ossian.le.scriptfilteroutput</string>
 	<key>connections</key>
 	<dict>
 		<key>50B0CD10-4D52-4898-9C05-DD3A34A829C3</key>
@@ -23,9 +23,9 @@
 		<array/>
 	</dict>
 	<key>createdby</key>
-	<string>Andrew Pepperrell</string>
+	<string>Ossian</string>
 	<key>description</key>
-	<string>Alfred's script filter object is extremely powerful, and gives you control over the results displayed in Alfred</string>
+	<string>yabai helper</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -106,11 +106,7 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Alfred's Script Filter object is extremely powerful, and gives you control over the results displayed in Alfred.
-
-Alfred uses JSON for the Script Filter output, which is the recommended format. XML is also supported for legacy Alfred workflows.
-
-If the result set is static, use the "Alfred filters results" option. This allows you to return a whole list of results then let Alfred do the subsequent filtering with extreme performance. When this option is selected, your script will be called once with no argument.</string>
+	<string>yabai helper</string>
 	<key>uidata</key>
 	<dict>
 		<key>50B0CD10-4D52-4898-9C05-DD3A34A829C3</key>
@@ -135,8 +131,8 @@ If the result set is static, use the "Alfred filters results" option. This allow
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.1</string>
+	<string>0.0.1</string>
 	<key>webaddress</key>
-	<string>https://www.alfredapp.com</string>
+	<string>tomyail.com</string>
 </dict>
 </plist>
